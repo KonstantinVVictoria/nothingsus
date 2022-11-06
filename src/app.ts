@@ -10,6 +10,8 @@ const PORT = process.env.PORT;
 // initiate express app
 const app = express();
 // middleware
+console.log(__dirname);
+app.use(express.static(__dirname + '/assets/'));
 app.use(cookieParser());
 app.use(checkTokenCookie);
 
@@ -20,8 +22,11 @@ app.get('/api/recommend', recommendSongsHandler);
 
 // static routes
 // these routes all send html pages to the browser
-app.get('/features', (req: Request, res: Response, next: NextFunction) => {
-  res.sendFile(path.join(__dirname, '../client/features.html'));
+// app.get('/features', (req: Request, res: Response, next: NextFunction) => {
+//   res.sendFile(path.join(__dirname, '../client/features.html'));
+// });
+app.get('/recommend', (req: Request, res: Response, next: NextFunction) => {
+  res.sendFile(path.join(__dirname, '../client/recommend.html'));
 });
 
 app.get('*', (req: Request, res: Response, next: NextFunction) => {

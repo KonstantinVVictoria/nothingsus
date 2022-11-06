@@ -31,11 +31,13 @@ export const getToken = async (): Promise<SpotifyAuthResponse> => {
 };
 
 export const getRecommendations = async (mood: Mood, token: string): Promise<Array<RecsForClient>> => {
-  const baseUrl = 'https://api.spotify.com/v1/recommendations?limit=5&market=ES';
+  const recommendationsLength = 20;
+  const baseUrl = `https://api.spotify.com/v1/recommendations?limit=${recommendationsLength}&market=ES`;
   const seedArtist: string[] = requestData.artist[mood];
   // api is only allowing one seed genre for some reason
   const seedGenres: string = requestData.genres[mood];
   const seedTracks: string[] = requestData.songs[mood];
+  console.log(seedArtist, seedGenres, seedTracks, mood);
   // create the request URL
   const reqUrl = `${baseUrl}&seed_artists=${seedArtist}&seed_genres=${seedGenres}&seed_tracks=${seedTracks}`;
   console.log(' --- REQUEST URL: ', reqUrl);
@@ -63,7 +65,7 @@ export const getRecommendations = async (mood: Mood, token: string): Promise<Arr
     console.log('  --- RESPONSE GENERATE: ', resData);
     return Promise.resolve(resData);
   } catch (err: any) {
-    console.log(err.data.error);
+    console.log(err.message);
     return Promise.reject();
   }
 };

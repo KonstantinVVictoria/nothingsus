@@ -17,7 +17,6 @@ export const requestData = {
       // Drivers License - Olivia Rodrigo
       '5wANPM4fQCJwkGd4rN57mH',
       // Because of You - Kelly Clarkson
-      '3f3omU8n47Mqyab5nCaGyT',
     ],
     angry: [
       // Last Resort - Papa Roach
@@ -40,7 +39,6 @@ export const requestData = {
       // olivia rodrigo
       '1McMsnEElThX1knmY4oliG',
       // kelly clarkson
-      '3BmGtnKgCSGYIUhmivXKWX',
     ],
     angry: [
       // Papa Roach
